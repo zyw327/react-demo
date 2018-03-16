@@ -2,9 +2,6 @@ const path = require('path');
 
 module.exports = {
   entry: __dirname + "/app/main.js", // string | object | array
-  resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
   output: {
     path: path.resolve(__dirname, "dist"), // string
     filename: "bundle.js", // string
@@ -23,16 +20,6 @@ module.exports = {
               }
           }
       }
-    ],
-    loaders: [
-        {
-          test: /\.js?$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/,
-          query: {
-            presets: ['es2015', 'react']
-          }
-        }
     ]
   },
   watch: true
