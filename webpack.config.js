@@ -1,9 +1,10 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: __dirname + "/app/main.js", // string | object | array
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
   },
   output: {
     path: path.resolve(__dirname, "dist"), // string
@@ -23,17 +24,12 @@ module.exports = {
               }
           }
       }
-    ],
-    loaders: [
-        {
-          test: /\.js?$/,
-          loader: 'babel-loader',
-          exclude: /node_modules/,
-          query: {
-            presets: ['es2015', 'react']
-          }
-        }
     ]
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+    }),
+  ],
   watch: true
 }
